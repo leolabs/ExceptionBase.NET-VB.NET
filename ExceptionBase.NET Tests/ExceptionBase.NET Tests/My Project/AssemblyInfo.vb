@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Die Werte der Assemblyattribute überprüfen
 
-<Assembly: AssemblyTitle("ExceptionBase.NET")> 
+<Assembly: AssemblyTitle("ExceptionBase.NET Tests")> 
 <Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("Leo Bernard (leolabs.org)")> 
-<Assembly: AssemblyProduct("ExceptionBase.NET")> 
+<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyProduct("ExceptionBase.NET Tests")> 
 <Assembly: AssemblyCopyright("Copyright ©  2012")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
 
 'Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird
-<Assembly: Guid("790fd237-55f7-4861-956a-6c9dab176a7a")> 
+<Assembly: Guid("dd813dcf-9159-40c8-9ae5-d1895e5750dd")> 
 
 ' Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
 '

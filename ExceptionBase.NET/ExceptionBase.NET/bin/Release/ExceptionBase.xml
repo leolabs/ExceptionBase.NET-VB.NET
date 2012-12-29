@@ -1,0 +1,83 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ExceptionBase
+</name>
+</assembly>
+<members>
+<member name="P:ExceptionBase.ExceptionBase.DetailWinTitle">
+	<summary>
+ Gibt den Titel des Detailfensters zurück oder ändert ihn.
+ </summary>
+	<value>Der neue Titel des Detailfensters</value>
+	<returns>Der Titel des Detailfensters</returns>
+	<remarks></remarks>
+</member><member name="P:ExceptionBase.ExceptionBase.DetailWinDescription">
+	<summary>
+ Gibt die Beschreibung im Detailfenster zurück oder ändert sie.
+ </summary>
+	<value>Die neue Beschreibung im Detailfenster</value>
+	<returns>Die Beschreibung im Detailfenster</returns>
+	<remarks></remarks>
+</member><member name="P:ExceptionBase.ExceptionBase.DetailWinInputCaption">
+	<summary>
+ Gibt den Titel des Eingabefeldes im Detailfenster zurück oder ändert ihn.
+ </summary>
+	<value>Der neue Titel des Eingabefeldes im Detailfenster</value>
+	<returns>Der Titel des Eingabefeldes im Detailfenster</returns>
+	<remarks></remarks>
+</member><member name="P:ExceptionBase.ExceptionBase.ApplicationPicture">
+	<summary>
+ Gibt das Programmicon im Detailfenster zurück oder ändert es.
+ </summary>
+	<value>Das neue Programmicon im Detailfenster</value>
+	<returns>Das Programmicon im Detailfenster</returns>
+	<remarks></remarks>
+</member><member name="P:ExceptionBase.ExceptionBase.DetailWinSkipButton">
+	<summary>
+ Gibt die Beschriftung des OK-Buttons im Detailfenster zurück oder ändert sie.
+ </summary>
+	<value>Die neue Beschriftung des OK-Buttons im Detailfenster</value>
+	<returns>Die Beschriftung des OK-Buttons im Detailfenster</returns>
+	<remarks></remarks>
+</member><member name="P:ExceptionBase.ExceptionBase.DetailWinSendButton">
+	<summary>
+ Gibt die Beschriftung des Überspringen-Buttons im Detailfenster zurück oder ändert sie.
+ </summary>
+	<value>Die neue Beschriftung des Überspringen-Buttons im Detailfenster</value>
+	<returns>Die Beschriftung des Überspringen-Buttons im Detailfenster</returns>
+	<remarks></remarks>
+</member><member name="M:ExceptionBase.ExceptionBase.#ctor(System.String,System.Int32,System.String,System.Drawing.Image)">
+	<summary>
+ Erstellt einen neuen Exception-Tracker, der Fehler an die ExceptionBase-Datenbank schicken kann.
+ </summary>
+	<param name="Server">Die URL zum hinzufügen eines Fehlers zur Datenbank. Siehe Startseite im PHP-Interface</param>
+	<param name="AppID">Die ID Ihrer App in der ExceptionBase.NET Datenbank</param>
+	<param name="Version">Die Version des Programmes</param>
+	<param name="AppIcon">Das Icon der App, wird im Detailfenster angezeigt</param>
+	<remarks></remarks>
+</member><member name="M:ExceptionBase.ExceptionBase.Track(System.Exception,System.Boolean)">
+	<summary>
+ Sendet den gegebenen Fehler an die ExceptionBase.NET Datenbank und fragt, wenn nicht anders
+ angegeben, den Nutzer vorher nach Informationen zu dem Fehler.
+ </summary>
+	<param name="ex">Die Exception, die zur Datenbank gesendet werden soll.</param>
+	<param name="AskUser">Soll der Benutzer selbst Informationen zu dem Fehler angeben können?</param>
+	<remarks></remarks>
+</member><member name="P:ExceptionBase.My.Resources.Resources.ResourceManager">
+	<summary>
+  Gibt die zwischengespeicherte ResourceManager-Instanz zurück, die von dieser Klasse verwendet wird.
+</summary>
+</member><member name="P:ExceptionBase.My.Resources.Resources.Culture">
+	<summary>
+  Überschreibt die CurrentUICulture-Eigenschaft des aktuellen Threads für alle
+  Ressourcenzuordnungen, die diese stark typisierte Ressourcenklasse verwenden.
+</summary>
+</member><member name="T:ExceptionBase.My.Resources.Resources">
+	<summary>
+  Eine stark typisierte Ressourcenklasse zum Suchen von lokalisierten Zeichenfolgen usw.
+</summary>
+</member>
+</members>
+</doc>
