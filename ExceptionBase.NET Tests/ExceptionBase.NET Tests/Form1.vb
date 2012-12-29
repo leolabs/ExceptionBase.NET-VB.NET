@@ -1,7 +1,7 @@
 ﻿Imports ExceptionBase
 
 Public Class Form1
-    Dim ExBase As New ExceptionBase("http://track.leolabs.org/api/addException.php", 1, ProductVersion.ToString, My.Resources.bug)
+    Dim ExBase As New ExceptionBase("", 1, ProductVersion.ToString, My.Resources.bug)
 
     Private Sub testDoubleToString(sender As Object, e As EventArgs) Handles btnDoubleToStringError.Click
         Try

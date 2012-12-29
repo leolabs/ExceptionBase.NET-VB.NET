@@ -11,8 +11,6 @@ Public Class ExceptionBase
     Private StackTrace As String = ""
     Private ErrorMethod As String = ""
     Private UserDescription As String = ""
-    Private Version As String = ""
-    Dim AppID As Integer = 0
     Dim NETFramework As String = ""
     Dim InstalledOS As String = ""
 
@@ -23,7 +21,9 @@ Public Class ExceptionBase
 
 #Region "Eigenschaften"
     Property Server As String = ""
-    Property PingIP As String = ""
+    Property PingIP As String = "8.8.8.8"
+    Property AppVersion As String = ""
+    Property AppID As Integer = 0
 
     ''' <summary>
     ''' Gibt den Titel des Detailfensters zurück oder ändert ihn.
@@ -126,7 +126,9 @@ Public Class ExceptionBase
     ''' <param name="AppIcon">Das Icon der App, wird im Detailfenster angezeigt</param>
     ''' <remarks></remarks>
     Public Sub New(ByVal Server As String, ByVal AppID As Integer, ByVal Version As String, ByVal AppIcon As Drawing.Image)
-        Me.Version = Version
+        Me.AppVersion = Version
+        Me.AppID = AppID
+        Me.Server = Server
         Me.ApplicationPicture = AppIcon
     End Sub
 
@@ -182,13 +184,16 @@ Public Class ExceptionBase
                                  "&eme=" & ErrorMethod & _
                                  "&udesc=" & UserDescription & _
                                  "&appid=" & AppID & _
-                                 "&v=" & Version & _
+                                 "&v=" & AppVersion & _
                                  "&net=" & NETFramework & _
                                  "&os=" & InstalledOS
 
             If My.Computer.Network.Ping(_PingIP) Then
-                Dim result As String = Functions.PostURL(Server, args)
-                Debug.Print("[ExceptionBase Info] Sent error report to the database.")
+                If Functions.PostURL(Server, args).Split(";"c)(0) = "1" Then
+                    Debug.Print("[ExceptionBase Info] Sent error report to the database.")
+                Else
+                    Debug.Print("[ExceptionBase Info] Error while sending error to the database.")
+                End If
             End If
         Catch
 

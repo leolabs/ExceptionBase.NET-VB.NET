@@ -1,9 +1,0 @@
-C:\Users\Leo Bernard\Documents\GitHub\ExceptionBase.NET-VB.NET\ExceptionBase.NET\ExceptionBase.NET\obj\Debug\ExceptionBase.NET.vbproj.GenerateResource.Cache
-C:\Users\Leo Bernard\Documents\GitHub\ExceptionBase.NET-VB.NET\ExceptionBase.NET\ExceptionBase.NET\bin\Release\ExceptionBase.dll
-C:\Users\Leo Bernard\Documents\GitHub\ExceptionBase.NET-VB.NET\ExceptionBase.NET\ExceptionBase.NET\bin\Release\ExceptionBase.pdb
-C:\Users\Leo Bernard\Documents\GitHub\ExceptionBase.NET-VB.NET\ExceptionBase.NET\ExceptionBase.NET\bin\Release\ExceptionBase.xml
-C:\Users\Leo Bernard\Documents\GitHub\ExceptionBase.NET-VB.NET\ExceptionBase.NET\ExceptionBase.NET\obj\Debug\ExceptionBase.Resources.resources
-C:\Users\Leo Bernard\Documents\GitHub\ExceptionBase.NET-VB.NET\ExceptionBase.NET\ExceptionBase.NET\obj\Debug\ExceptionBase.UserDetails.resources
-C:\Users\Leo Bernard\Documents\GitHub\ExceptionBase.NET-VB.NET\ExceptionBase.NET\ExceptionBase.NET\obj\Debug\ExceptionBase.dll
-C:\Users\Leo Bernard\Documents\GitHub\ExceptionBase.NET-VB.NET\ExceptionBase.NET\ExceptionBase.NET\obj\Debug\ExceptionBase.xml
-C:\Users\Leo Bernard\Documents\GitHub\ExceptionBase.NET-VB.NET\ExceptionBase.NET\ExceptionBase.NET\obj\Debug\ExceptionBase.pdb

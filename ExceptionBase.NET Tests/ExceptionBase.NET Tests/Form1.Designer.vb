@@ -56,7 +56,6 @@ Partial Class Form1
         '
         'btnDoubleToStringError
         '
-        Me.btnDoubleToStringError.Enabled = False
         Me.btnDoubleToStringError.Location = New System.Drawing.Point(12, 126)
         Me.btnDoubleToStringError.Name = "btnDoubleToStringError"
         Me.btnDoubleToStringError.Size = New System.Drawing.Size(409, 35)
@@ -66,7 +65,6 @@ Partial Class Form1
         '
         'btnNonexistentFileError
         '
-        Me.btnNonexistentFileError.Enabled = False
         Me.btnNonexistentFileError.Location = New System.Drawing.Point(12, 167)
         Me.btnNonexistentFileError.Name = "btnNonexistentFileError"
         Me.btnNonexistentFileError.Size = New System.Drawing.Size(409, 33)
@@ -91,6 +89,7 @@ Partial Class Form1
         Me.tbDatabaseAdress.Name = "tbDatabaseAdress"
         Me.tbDatabaseAdress.Size = New System.Drawing.Size(403, 20)
         Me.tbDatabaseAdress.TabIndex = 0
+        Me.tbDatabaseAdress.Text = "http://meine.domain/api/addException.php"
         '
         'Form1
         '
