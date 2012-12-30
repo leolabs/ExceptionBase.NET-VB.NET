@@ -6,11 +6,6 @@ Public Class ExceptionBase
     Private UserDetails As New UserDetails()
 
     ' Klassenvariablen für Fehlerdetails setzen
-    Private ExceptionMessage As String = ""
-    Private ExceptionInner As String = ""
-    Private StackTrace As String = ""
-    Private ErrorMethod As String = ""
-    Private UserDescription As String = ""
     Dim NETFramework As String = ""
     Dim InstalledOS As String = ""
 
@@ -20,100 +15,26 @@ Public Class ExceptionBase
 #End Region
 
 #Region "Eigenschaften"
-    Property Server As String = ""
-    Property PingIP As String = "8.8.8.8"
-    Property AppVersion As String = ""
-    Property AppID As Integer = 0
 
     ''' <summary>
-    ''' Gibt den Titel des Detailfensters zurück oder ändert ihn.
+    ''' Die Beschriftungen im Benutzerfenster
     ''' </summary>
-    ''' <value>Der neue Titel des Detailfensters</value>
-    ''' <returns>Der Titel des Detailfensters</returns>
-    ''' <remarks></remarks>
-    Property DetailWinTitle As String
-        Get
-            Return UserDetails.winTitle
-        End Get
-        Set(value As String)
-            UserDetails.winTitle = value
-        End Set
-    End Property
+    Property Language As New Language()
 
     ''' <summary>
-    ''' Gibt die Beschreibung im Detailfenster zurück oder ändert sie.
+    ''' Informationen zum Server
     ''' </summary>
-    ''' <value>Die neue Beschreibung im Detailfenster</value>
-    ''' <returns>Die Beschreibung im Detailfenster</returns>
-    ''' <remarks></remarks>
-    Property DetailWinDescription As String
-        Get
-            Return UserDetails.winDescription
-        End Get
-        Set(value As String)
-            UserDetails.winDescription = value
-        End Set
-    End Property
+    Property Server As New Server()
 
     ''' <summary>
-    ''' Gibt den Titel des Eingabefeldes im Detailfenster zurück oder ändert ihn.
+    ''' Informationen zu Ihrem Programm
     ''' </summary>
-    ''' <value>Der neue Titel des Eingabefeldes im Detailfenster</value>
-    ''' <returns>Der Titel des Eingabefeldes im Detailfenster</returns>
-    ''' <remarks></remarks>
-    Property DetailWinInputCaption As String
-        Get
-            Return UserDetails.winInputCaption
-        End Get
-        Set(value As String)
-            UserDetails.winInputCaption = value
-        End Set
-    End Property
+    Property Application As New Application()
 
     ''' <summary>
-    ''' Gibt das Programmicon im Detailfenster zurück oder ändert es.
+    ''' Fehlerinformationen
     ''' </summary>
-    ''' <value>Das neue Programmicon im Detailfenster</value>
-    ''' <returns>Das Programmicon im Detailfenster</returns>
-    ''' <remarks></remarks>
-    Property ApplicationPicture As Drawing.Image
-        Get
-            Return UserDetails.pbAppImage.Image
-        End Get
-        Set(value As Drawing.Image)
-            UserDetails.pbAppImage.Image = value
-        End Set
-    End Property
-
-    ''' <summary>
-    ''' Gibt die Beschriftung des OK-Buttons im Detailfenster zurück oder ändert sie.
-    ''' </summary>
-    ''' <value>Die neue Beschriftung des OK-Buttons im Detailfenster</value>
-    ''' <returns>Die Beschriftung des OK-Buttons im Detailfenster</returns>
-    ''' <remarks></remarks>
-    Property DetailWinSkipButton As String
-        Get
-            Return UserDetails.bSkip
-        End Get
-        Set(value As String)
-            UserDetails.bSkip = value
-        End Set
-    End Property
-
-    ''' <summary>
-    ''' Gibt die Beschriftung des Überspringen-Buttons im Detailfenster zurück oder ändert sie.
-    ''' </summary>
-    ''' <value>Die neue Beschriftung des Überspringen-Buttons im Detailfenster</value>
-    ''' <returns>Die Beschriftung des Überspringen-Buttons im Detailfenster</returns>
-    ''' <remarks></remarks>
-    Property DetailWinSendButton As String
-        Get
-            Return UserDetails.bSend
-        End Get
-        Set(value As String)
-            UserDetails.bSend = value
-        End Set
-    End Property
+    Property Exception As New ExceptionInfo()
 #End Region
 
 #Region "Methoden"
@@ -124,12 +45,11 @@ Public Class ExceptionBase
     ''' <param name="AppID">Die ID Ihrer App in der ExceptionBase.NET Datenbank</param>
     ''' <param name="Version">Die Version des Programmes</param>
     ''' <param name="AppIcon">Das Icon der App, wird im Detailfenster angezeigt</param>
-    ''' <remarks></remarks>
     Public Sub New(ByVal Server As String, ByVal AppID As Integer, ByVal Version As String, ByVal AppIcon As Drawing.Image)
-        Me.AppVersion = Version
-        Me.AppID = AppID
-        Me.Server = Server
-        Me.ApplicationPicture = AppIcon
+        Me.Application.Version = Version
+        Me.Application.ID = AppID
+        Me.Server.Server = Server
+        Me.Application.Icon = AppIcon
     End Sub
 
     ''' <summary>
@@ -138,66 +58,94 @@ Public Class ExceptionBase
     ''' </summary>
     ''' <param name="ex">Die Exception, die zur Datenbank gesendet werden soll.</param>
     ''' <param name="AskUser">Soll der Benutzer selbst Informationen zu dem Fehler angeben können?</param>
-    ''' <remarks></remarks>
     Public Sub Track(ByVal ex As Exception, Optional ByVal AskUser As Boolean = True)
         Try
+            ' .NET Framework und installiertes Betriebssystem auslesen
             NETFramework = System.Environment.Version.ToString()
             InstalledOS = System.Environment.OSVersion.VersionString
 
+            ' Message der Exception auslesen
             If Not IsNothing(ex.Message) Then
-                ExceptionMessage = ex.Message
+                Exception.Message = ex.Message
             Else
-                ExceptionMessage = NOTAVAILABLE
+                Exception.Message = NOTAVAILABLE
             End If
 
+            ' InnerException auslesen
             If Not IsNothing(ex.InnerException) Then
-                ExceptionInner = ex.InnerException.ToString
+                Exception.Inner = ex.InnerException.ToString
             Else
-                ExceptionInner = NOTAVAILABLE
+                Exception.Inner = NOTAVAILABLE
             End If
 
+            ' StackTrace der Exception auslesen
             If Not IsNothing(ex.StackTrace) Then
-                StackTrace = ex.StackTrace
+                Exception.StackTrace = ex.StackTrace
             Else
-                StackTrace = NOTAVAILABLE
+                Exception.StackTrace = NOTAVAILABLE
             End If
 
+            ' Methode, die Exception ausgelöst hat, auslösen
             If Not IsNothing(ex.TargetSite) Then
-                ErrorMethod = ex.TargetSite.ToString()
+                Exception.TargetSite = ex.TargetSite.ToString()
             Else
-                ErrorMethod = NOTAVAILABLE
+                Exception.TargetSite = NOTAVAILABLE
             End If
 
-            If AskUser Then
-                If UserDetails.ShowDialog() = Windows.Forms.DialogResult.OK Then
-                    UserDescription = UserDetails.TextBox1.Text
-                Else
-                    UserDescription = DESCSKIPPED
-                End If
-            Else
-                UserDescription = NOTAVAILABLE
-            End If
-
-            Dim args As String = "em=" & ExceptionMessage & _
-                                 "&ei=" & ExceptionInner & _
-                                 "&st=" & StackTrace & _
-                                 "&eme=" & ErrorMethod & _
-                                 "&udesc=" & UserDescription & _
-                                 "&appid=" & AppID & _
-                                 "&v=" & AppVersion & _
-                                 "&net=" & NETFramework & _
-                                 "&os=" & InstalledOS
-
-            If My.Computer.Network.Ping(_PingIP) Then
-                If Functions.PostURL(Server, args).Split(";"c)(0) = "1" Then
-                    Debug.Print("[ExceptionBase Info] Sent error report to the database.")
-                Else
-                    Debug.Print("[ExceptionBase Info] Error while sending error to the database.")
-                End If
-            End If
+            ' Fehler Tracken
+            TrackCustom(AskUser)
         Catch
 
         End Try
+    End Sub
+
+    ''' <summary>
+    ''' Tracken eines selbst erstellten Fehlers, Informationen können in ExceptionInformation angepasst werden.
+    ''' </summary>
+    ''' <param name="AskUser">Soll der Benutzer nach Informationen gefragt werden?</param>
+    Public Sub TrackCustom(Optional ByVal AskUser As Boolean = True)
+        If AskUser Then
+            ' Sprache, Icon und Fehlerdetails in das Benutzerfenster übernehmen
+            With UserDetails
+                .Language = Me.Language
+                .tcInformation.Visible = Application.ShowErrorDetails
+                .pbAppImage.Image = Application.Icon
+                .tbAppVersion.Text = Application.Version
+                .tbNetFramework.Text = NETFramework
+                .tbOperatingSystem.Text = InstalledOS
+                .tbErrorDescription.Text = Exception.Message
+                .tbErrorInner.Text = Exception.Inner
+            End With
+
+            ' Benutzerfenster als Dialog anzeigen
+            If UserDetails.ShowDialog() = Windows.Forms.DialogResult.OK Then
+                Exception.UserDescription = UserDetails.tbUserDescription.Text
+            Else
+                Exception.UserDescription = DESCSKIPPED
+            End If
+        Else
+            Exception.UserDescription = NOTAVAILABLE
+        End If
+
+        ' Parameter für Server-Anfrage zusammensetzen
+        Dim args As String = "em=" & Exception.Message & _
+                             "&ei=" & Exception.Inner & _
+                             "&st=" & Exception.StackTrace & _
+                             "&eme=" & Exception.TargetSite & _
+                             "&udesc=" & Exception.UserDescription & _
+                             "&appid=" & Application.ID & _
+                             "&v=" & Application.Version & _
+                             "&net=" & NETFramework & _
+                             "&os=" & InstalledOS
+
+        ' Prüfen, ob Computer eine Internetverbindung hat
+        If My.Computer.Network.Ping(Server.PingIP) Then
+            If Functions.PostURL(Server.Server, args).Split(";"c)(0) = "1" Then
+                Debug.Print("[ExceptionBase Info] Sent error report to the database.")
+            Else
+                Debug.Print("[ExceptionBase Info] Error while sending error to the database.")
+            End If
+        End If
     End Sub
 #End Region
 End Class

@@ -1,12 +1,7 @@
 ﻿Option Strict On
 
 Public Class UserDetails
-    ' Beschriftungen initialisieren
-    Public winTitle As String = "Benutzerdetails zu dem Fehler"
-    Public winDescription As String = "Es ist ein schwerwiegender Fehler aufgetreten. Bitte beschreiben Sie die Schritte, die zu dem Fehler geführt haben könnten, damit wir ihn so schnell wie möglich beheben können."
-    Public winInputCaption As String = "Beschreibung des Fehlers"
-    Public bSkip As String = "Ü&berspringen"
-    Public bSend As String = "&OK"
+    Public Language As New Language()
 
     Private Sub btnSend_Click(sender As Object, e As EventArgs) Handles btnSend.Click
         ' Beschreibung wird an die Datenbank gesendet
@@ -20,10 +15,22 @@ Public Class UserDetails
 
     Private Sub UserDetails_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         ' Text in Steuerelemente übernehmen
-        Me.Text = winTitle
-        lblDescription.Text = winDescription
-        gbUserDescription.Text = winInputCaption
-        btnSend.Text = bSend
-        btnSkip.Text = bSkip
+        ' Titel und Beschreibung im Fenster
+        Me.Text = Language.winTitle
+        lblDescription.Text = Language.winDescription
+
+        ' Beschriftung der Tabs
+        tabUserDescription.Text = Language.tabInputCaption
+        tabDetailedInformation.Text = Language.tabDetailedInfoCaption
+
+        ' Beschriftung der einzelnen Felder in dem "Weitere Informationen"-Tab
+        gbAppVersion.Text = Language.appVersionCaption
+        gbNetFramework.Text = Language.netVersionCaption
+        gbOperatingSystem.Text = Language.osVersionCaption
+        gbErrorDetails.Text = Language.errorDetailCaption
+
+        ' Beschriftung der Buttons zum Senden oder Überspringen
+        btnSend.Text = Language.bSend
+        btnSkip.Text = Language.bSkip
     End Sub
 End Class

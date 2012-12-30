@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Base.vb" />
     <Compile Include="Functions.vb" />
+    <Compile Include="Properties.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
