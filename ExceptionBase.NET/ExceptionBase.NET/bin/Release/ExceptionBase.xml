@@ -30,13 +30,14 @@ ExceptionBase
 	<param name="AppID">Die ID Ihrer App in der ExceptionBase.NET Datenbank</param>
 	<param name="Version">Die Version des Programmes</param>
 	<param name="AppIcon">Das Icon der App, wird im Detailfenster angezeigt</param>
-</member><member name="M:ExceptionBase.ExceptionBase.Track(System.Exception,System.Boolean)">
+</member><member name="M:ExceptionBase.ExceptionBase.Track(System.Exception,System.Boolean,System.Boolean)">
 	<summary>
  Sendet den gegebenen Fehler an die ExceptionBase.NET Datenbank und fragt, wenn nicht anders
  angegeben, den Nutzer vorher nach Informationen zu dem Fehler.
  </summary>
 	<param name="ex">Die Exception, die zur Datenbank gesendet werden soll.</param>
 	<param name="AskUser">Soll der Benutzer selbst Informationen zu dem Fehler angeben können?</param>
+	<param name="ThrowException">Soll eine Exception geworfen werden, wenn in der Methode ein Fehler auftritt?</param>
 </member><member name="M:ExceptionBase.ExceptionBase.TrackCustom(System.Boolean)">
 	<summary>
  Tracken eines selbst erstellten Fehlers, Informationen können in ExceptionInformation angepasst werden.

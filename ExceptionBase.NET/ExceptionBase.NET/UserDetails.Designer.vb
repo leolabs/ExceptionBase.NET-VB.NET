@@ -75,7 +75,7 @@ Partial Class UserDetails
         Me.tlpImageAndDescription.RowCount = 2
         Me.tlpImageAndDescription.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64.0!))
         Me.tlpImageAndDescription.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.tlpImageAndDescription.Size = New System.Drawing.Size(510, 70)
+        Me.tlpImageAndDescription.Size = New System.Drawing.Size(510, 75)
         Me.tlpImageAndDescription.TabIndex = 4
         '
         'pbAppImage
@@ -99,6 +99,7 @@ Partial Class UserDetails
         Me.lblDescription.Size = New System.Drawing.Size(440, 64)
         Me.lblDescription.TabIndex = 1
         Me.lblDescription.Text = resources.GetString("lblDescription.Text")
+        Me.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'pnlControlButtons
         '
@@ -165,10 +166,10 @@ Partial Class UserDetails
         Me.tcInformation.Controls.Add(Me.tabUserDescription)
         Me.tcInformation.Controls.Add(Me.tabDetailedInformation)
         Me.tcInformation.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tcInformation.Location = New System.Drawing.Point(10, 80)
+        Me.tcInformation.Location = New System.Drawing.Point(10, 85)
         Me.tcInformation.Name = "tcInformation"
         Me.tcInformation.SelectedIndex = 0
-        Me.tcInformation.Size = New System.Drawing.Size(510, 262)
+        Me.tcInformation.Size = New System.Drawing.Size(510, 257)
         Me.tcInformation.TabIndex = 8
         '
         'tabUserDescription
@@ -177,7 +178,7 @@ Partial Class UserDetails
         Me.tabUserDescription.Location = New System.Drawing.Point(4, 22)
         Me.tabUserDescription.Name = "tabUserDescription"
         Me.tabUserDescription.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabUserDescription.Size = New System.Drawing.Size(502, 236)
+        Me.tabUserDescription.Size = New System.Drawing.Size(502, 231)
         Me.tabUserDescription.TabIndex = 0
         Me.tabUserDescription.Text = "Beschreibung des Fehlers"
         Me.tabUserDescription.UseVisualStyleBackColor = True
@@ -191,7 +192,7 @@ Partial Class UserDetails
         Me.tbUserDescription.Multiline = True
         Me.tbUserDescription.Name = "tbUserDescription"
         Me.tbUserDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.tbUserDescription.Size = New System.Drawing.Size(496, 230)
+        Me.tbUserDescription.Size = New System.Drawing.Size(496, 225)
         Me.tbUserDescription.TabIndex = 9
         '
         'tabDetailedInformation
@@ -202,7 +203,7 @@ Partial Class UserDetails
         Me.tabDetailedInformation.Location = New System.Drawing.Point(4, 22)
         Me.tabDetailedInformation.Name = "tabDetailedInformation"
         Me.tabDetailedInformation.Padding = New System.Windows.Forms.Padding(5)
-        Me.tabDetailedInformation.Size = New System.Drawing.Size(502, 236)
+        Me.tabDetailedInformation.Size = New System.Drawing.Size(502, 231)
         Me.tabDetailedInformation.TabIndex = 1
         Me.tabDetailedInformation.Text = "Weitere Informationen"
         Me.tabDetailedInformation.UseVisualStyleBackColor = True
@@ -213,7 +214,7 @@ Partial Class UserDetails
         Me.gbErrorDetails.Dock = System.Windows.Forms.DockStyle.Fill
         Me.gbErrorDetails.Location = New System.Drawing.Point(5, 61)
         Me.gbErrorDetails.Name = "gbErrorDetails"
-        Me.gbErrorDetails.Size = New System.Drawing.Size(492, 170)
+        Me.gbErrorDetails.Size = New System.Drawing.Size(492, 165)
         Me.gbErrorDetails.TabIndex = 3
         Me.gbErrorDetails.TabStop = False
         Me.gbErrorDetails.Text = "Fehler-Details"
@@ -230,7 +231,7 @@ Partial Class UserDetails
         Me.tlpErrorDetails.RowCount = 2
         Me.tlpErrorDetails.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25.0!))
         Me.tlpErrorDetails.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.tlpErrorDetails.Size = New System.Drawing.Size(486, 151)
+        Me.tlpErrorDetails.Size = New System.Drawing.Size(486, 146)
         Me.tlpErrorDetails.TabIndex = 0
         '
         'tbErrorInner

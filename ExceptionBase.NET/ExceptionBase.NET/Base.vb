@@ -58,7 +58,8 @@ Public Class ExceptionBase
     ''' </summary>
     ''' <param name="ex">Die Exception, die zur Datenbank gesendet werden soll.</param>
     ''' <param name="AskUser">Soll der Benutzer selbst Informationen zu dem Fehler angeben können?</param>
-    Public Sub Track(ByVal ex As Exception, Optional ByVal AskUser As Boolean = True)
+    ''' <param name="ThrowException">Soll eine Exception geworfen werden, wenn in der Methode ein Fehler auftritt?</param>
+    Public Sub Track(ByVal ex As Exception, Optional ByVal AskUser As Boolean = True, Optional ByVal ThrowException As Boolean = False)
         Try
             ' .NET Framework und installiertes Betriebssystem auslesen
             NETFramework = System.Environment.Version.ToString()
@@ -85,7 +86,7 @@ Public Class ExceptionBase
                 Exception.StackTrace = NOTAVAILABLE
             End If
 
-            ' Methode, die Exception ausgelöst hat, auslösen
+            ' Methode, die Exception ausgelöst hat, auslesen
             If Not IsNothing(ex.TargetSite) Then
                 Exception.TargetSite = ex.TargetSite.ToString()
             Else
@@ -94,8 +95,8 @@ Public Class ExceptionBase
 
             ' Fehler Tracken
             TrackCustom(AskUser)
-        Catch
-
+        Catch exception As Exception
+            If ThrowException Then Throw exception
         End Try
     End Sub
 
@@ -108,7 +109,14 @@ Public Class ExceptionBase
             ' Sprache, Icon und Fehlerdetails in das Benutzerfenster übernehmen
             With UserDetails
                 .Language = Me.Language
-                .tcInformation.Visible = Application.ShowErrorDetails
+
+                If Application.ShowErrorDetails Then
+                    .tabDetailedInformation.Show()
+                Else
+                    .tabDetailedInformation.Hide()
+                End If
+
+                .tcInformation.SelectTab(0)
                 .pbAppImage.Image = Application.Icon
                 .tbAppVersion.Text = Application.Version
                 .tbNetFramework.Text = NETFramework
