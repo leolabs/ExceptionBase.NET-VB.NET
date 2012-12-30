@@ -1,4 +1,7 @@
+# Debug Folders/Files #
+#######################
 *Debug/
+*.vshost.exe
 
 # Logs and databases #
 ######################
