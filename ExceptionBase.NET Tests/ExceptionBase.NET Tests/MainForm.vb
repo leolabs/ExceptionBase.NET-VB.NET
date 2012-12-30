@@ -34,8 +34,8 @@ Public Class MainForm
     ''' </summary>
     Private Sub validateServerAdress(sender As Object, e As EventArgs) Handles tbDatabaseAdress.TextChanged
         If tbDatabaseAdress.Text Like "http*://*.*/api/addException.php" Then
-            ExBase.ServerInformation.Server = tbDatabaseAdress.Text
-            ExBase.ServerInformation.AppID = nudAppID.Value
+            ExBase.Server.Server = tbDatabaseAdress.Text
+            ExBase.Application.ID = nudAppID.Value
             btnDoubleToStringError.Enabled = True
             btnNonexistentFileError.Enabled = True
         Else
