@@ -9,14 +9,17 @@ Public Class UserDetails
     Public bSend As String = "&OK"
 
     Private Sub btnSend_Click(sender As Object, e As EventArgs) Handles btnSend.Click
+        ' Beschreibung wird an die Datenbank gesendet
         Me.DialogResult = Windows.Forms.DialogResult.OK
     End Sub
 
     Private Sub btnSkip_Click(sender As Object, e As EventArgs) Handles btnSkip.Click
+        ' Beschreibung wird übersprungen
         Me.DialogResult = Windows.Forms.DialogResult.Ignore
     End Sub
 
     Private Sub UserDetails_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        ' Text in Steuerelemente übernehmen
         Me.Text = winTitle
         lblDescription.Text = winDescription
         gbUserDescription.Text = winInputCaption
