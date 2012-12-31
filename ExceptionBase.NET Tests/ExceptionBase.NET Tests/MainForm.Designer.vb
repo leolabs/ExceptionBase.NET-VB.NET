@@ -93,7 +93,7 @@ Partial Class MainForm
         Me.tbDatabaseAdress.Name = "tbDatabaseAdress"
         Me.tbDatabaseAdress.Size = New System.Drawing.Size(344, 20)
         Me.tbDatabaseAdress.TabIndex = 0
-        Me.tbDatabaseAdress.Text = "http://meine.domain/api/addException.php"
+        Me.tbDatabaseAdress.Text = "http://test.exceptionbase.net/api/addException.php"
         '
         'gbAppID
         '
@@ -114,7 +114,7 @@ Partial Class MainForm
         Me.nudAppID.Size = New System.Drawing.Size(47, 20)
         Me.nudAppID.TabIndex = 0
         '
-        'Form1
+        'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -127,7 +127,7 @@ Partial Class MainForm
         Me.Controls.Add(Me.lblProjectDescription)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
-        Me.Name = "Form1"
+        Me.Name = "MainForm"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ExceptionBase.NET Tests"

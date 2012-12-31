@@ -66,7 +66,7 @@ Partial Class UserDetails
         '
         Me.tlpImageAndDescription.ColumnCount = 2
         Me.tlpImageAndDescription.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64.0!))
-        Me.tlpImageAndDescription.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.tlpImageAndDescription.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.tlpImageAndDescription.Controls.Add(Me.pbAppImage, 0, 0)
         Me.tlpImageAndDescription.Controls.Add(Me.lblDescription, 1, 0)
         Me.tlpImageAndDescription.Dock = System.Windows.Forms.DockStyle.Top
@@ -230,7 +230,7 @@ Partial Class UserDetails
         Me.tlpErrorDetails.Name = "tlpErrorDetails"
         Me.tlpErrorDetails.RowCount = 2
         Me.tlpErrorDetails.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25.0!))
-        Me.tlpErrorDetails.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.tlpErrorDetails.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.tlpErrorDetails.Size = New System.Drawing.Size(486, 146)
         Me.tlpErrorDetails.TabIndex = 0
         '
@@ -243,7 +243,7 @@ Partial Class UserDetails
         Me.tbErrorInner.Name = "tbErrorInner"
         Me.tbErrorInner.ReadOnly = True
         Me.tbErrorInner.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.tbErrorInner.Size = New System.Drawing.Size(480, 120)
+        Me.tbErrorInner.Size = New System.Drawing.Size(480, 115)
         Me.tbErrorInner.TabIndex = 1
         '
         'tbErrorDescription
