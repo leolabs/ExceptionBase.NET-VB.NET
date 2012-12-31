@@ -43,4 +43,8 @@ Public Class MainForm
             btnNonexistentFileError.Enabled = False
         End If
     End Sub
+
+    Private Sub lblProjectDescription_Click(sender As Object, e As EventArgs) Handles lblProjectDescription.Click
+        Process.Start("http://git.exceptionbase.net")
+    End Sub
 End Class

@@ -39,6 +39,7 @@ Partial Class MainForm
         '
         Me.lblProjectDescription.AutoEllipsis = True
         Me.lblProjectDescription.BackColor = System.Drawing.Color.White
+        Me.lblProjectDescription.Cursor = System.Windows.Forms.Cursors.Hand
         Me.lblProjectDescription.Dock = System.Windows.Forms.DockStyle.Top
         Me.lblProjectDescription.Location = New System.Drawing.Point(0, 0)
         Me.lblProjectDescription.MinimumSize = New System.Drawing.Size(272, 58)
@@ -47,7 +48,8 @@ Partial Class MainForm
         Me.lblProjectDescription.Size = New System.Drawing.Size(433, 59)
         Me.lblProjectDescription.TabIndex = 3
         Me.lblProjectDescription.Text = "Dieses Programm testet die Fehlerbehandlung und das damit verbundene Fehlerfenste" & _
-    "r von ExceptionBase.NET. Weitere Informationen: http://git.exceptionbase.net"
+    "r von ExceptionBase.NET. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Testseite: http://test.exceptionbase.net | Mehr Infos" & _
+    ": http://git.exceptionbase.net"
         '
         'pnlBlueLine
         '
