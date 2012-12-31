@@ -28,6 +28,27 @@ Public Class MainForm
     End Sub
 
     ''' <summary>
+    ''' Sendet einen selbst definierten Fehler an
+    ''' die Datenbank, alle Fehlerinformationen
+    ''' können angepasst werden.
+    ''' </summary>
+    Private Sub sendCustomError(sender As Object, e As EventArgs) Handles Button1.Click
+        ' Fehlerinformationen (System, Framework, Programmversion und 
+        ' Fehlerdetails bei angabe einer Exception) beziehen.
+        ExBase.GatherInformation()
+
+        ' Der Fehler kann komplett angepasst werden
+        With ExBase.Exception
+            .Message = "Ein eigener Fehler!"
+            .Inner = "Die Informationen können beliebig angepasst werden..."
+            .UserDescription = InputBox("Bitte geben Sie eine Beschreibung ein:", "Fehler:", "Nicht angegeben")
+        End With
+
+        ' Fehler an die Datenbank senden
+        ExBase.Send()
+    End Sub
+
+    ''' <summary>
     ''' Überprüft die Serveradresse und (de-)aktiviert
     ''' daraufhin die Test-Buttons. Ist die Adresse korrekt,
     ''' werden Serveradresse und AppID in Exceptionbase.NET übernommen.
@@ -46,17 +67,5 @@ Public Class MainForm
 
     Private Sub lblProjectDescription_Click(sender As Object, e As EventArgs) Handles lblProjectDescription.Click
         Process.Start("http://git.exceptionbase.net")
-    End Sub
-
-    Private Sub sendCustomError(sender As Object, e As EventArgs) Handles Button1.Click
-        ExBase.GatherInformation()
-
-        With ExBase.Exception
-            .Message = "Ein eigener Fehler!"
-            .Inner = "Die Informationen können beliebig angepasst werden..."
-            .UserDescription = InputBox("Bitte geben Sie eine Beschreibung ein:", "Fehler:", "Nicht angegeben")
-        End With
-
-        ExBase.Send()
     End Sub
 End Class

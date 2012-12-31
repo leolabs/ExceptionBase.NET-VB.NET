@@ -42,7 +42,7 @@ ExceptionBase
 	<summary>
  Bezieht alle nötigen Informationen aus der Exception
  </summary>
-	<param name="ex">Die Exception aus der Fehler bezogen werden sollen</param>
+	<param name="ex">Die Exception aus der Fehlerinformationen bezogen werden sollen</param>
 	<remarks></remarks>
 </member><member name="M:ExceptionBase.ExceptionBase.Send">
 	<summary>

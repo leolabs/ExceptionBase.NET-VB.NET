@@ -16,6 +16,12 @@ ExceptionBase.NETTests
  Versucht, eine nicht existierende Datei zu lesen
  und fängt den dabei entstandenen Fehler ab.
  </summary>
+</member><member name="M:ExceptionBase.NET_Tests.MainForm.sendCustomError(System.Object,System.EventArgs)">
+	<summary>
+ Sendet einen selbst definierten Fehler an
+ die Datenbank, alle Fehlerinformationen
+ können angepasst werden.
+ </summary>
 </member><member name="M:ExceptionBase.NET_Tests.MainForm.validateServerAdress(System.Object,System.EventArgs)">
 	<summary>
  Überprüft die Serveradresse und (de-)aktiviert

@@ -173,6 +173,7 @@ Public Class ExceptionBase
             Exception.UserDescription = NOTAVAILABLE
         End If
 
+        ' Fehler an die Datenbank senden
         Send()
     End Sub
 #End Region
