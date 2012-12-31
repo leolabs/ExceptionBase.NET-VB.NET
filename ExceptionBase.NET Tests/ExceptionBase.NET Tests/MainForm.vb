@@ -47,4 +47,16 @@ Public Class MainForm
     Private Sub lblProjectDescription_Click(sender As Object, e As EventArgs) Handles lblProjectDescription.Click
         Process.Start("http://git.exceptionbase.net")
     End Sub
+
+    Private Sub sendCustomError(sender As Object, e As EventArgs) Handles Button1.Click
+        ExBase.GatherInformation()
+
+        With ExBase.Exception
+            .Message = "Ein eigener Fehler!"
+            .Inner = "Die Informationen können beliebig angepasst werden..."
+            .UserDescription = InputBox("Bitte geben Sie eine Beschreibung ein:", "Fehler:", "Nicht angegeben")
+        End With
+
+        ExBase.Send()
+    End Sub
 End Class

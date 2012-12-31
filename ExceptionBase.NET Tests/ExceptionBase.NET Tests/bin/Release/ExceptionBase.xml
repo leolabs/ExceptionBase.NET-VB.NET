@@ -38,6 +38,17 @@ ExceptionBase
 	<param name="ex">Die Exception, die zur Datenbank gesendet werden soll.</param>
 	<param name="AskUser">Soll der Benutzer selbst Informationen zu dem Fehler angeben können?</param>
 	<param name="ThrowException">Soll eine Exception geworfen werden, wenn in der Methode ein Fehler auftritt?</param>
+</member><member name="M:ExceptionBase.ExceptionBase.GatherInformation(System.Exception)">
+	<summary>
+ Bezieht alle nötigen Informationen aus der Exception
+ </summary>
+	<param name="ex">Die Exception aus der Fehler bezogen werden sollen</param>
+	<remarks></remarks>
+</member><member name="M:ExceptionBase.ExceptionBase.Send">
+	<summary>
+ Schickt den Fehler an den vorher angegebenen Server.
+ </summary>
+	<remarks></remarks>
 </member><member name="M:ExceptionBase.ExceptionBase.TrackCustom(System.Boolean)">
 	<summary>
  Tracken eines selbst erstellten Fehlers, Informationen können in ExceptionInformation angepasst werden.

@@ -61,10 +61,27 @@ Public Class ExceptionBase
     ''' <param name="ThrowException">Soll eine Exception geworfen werden, wenn in der Methode ein Fehler auftritt?</param>
     Public Sub Track(ByVal ex As Exception, Optional ByVal AskUser As Boolean = True, Optional ByVal ThrowException As Boolean = False)
         Try
-            ' .NET Framework und installiertes Betriebssystem auslesen
-            NETFramework = System.Environment.Version.ToString()
-            InstalledOS = System.Environment.OSVersion.VersionString
+            ' Informationen aus dem Fehler auslesen
+            GatherInformation(ex)
 
+            ' Fehler Tracken
+            TrackCustom(AskUser)
+        Catch exception As Exception
+            If ThrowException Then Throw exception
+        End Try
+    End Sub
+
+    ''' <summary>
+    ''' Bezieht alle nötigen Informationen aus der Exception
+    ''' </summary>
+    ''' <param name="ex">Die Exception aus der Fehlerinformationen bezogen werden sollen</param>
+    ''' <remarks></remarks>
+    Public Sub GatherInformation(Optional ByVal ex As Exception = Nothing)
+        ' .NET Framework und installiertes Betriebssystem auslesen
+        NETFramework = System.Environment.Version.ToString()
+        InstalledOS = System.Environment.OSVersion.VersionString
+
+        If Not IsNothing(ex) Then
             ' Message der Exception auslesen
             If Not IsNothing(ex.Message) Then
                 Exception.Message = ex.Message
@@ -92,12 +109,33 @@ Public Class ExceptionBase
             Else
                 Exception.TargetSite = NOTAVAILABLE
             End If
+        End If
+    End Sub
 
-            ' Fehler Tracken
-            TrackCustom(AskUser)
-        Catch exception As Exception
-            If ThrowException Then Throw exception
-        End Try
+    ''' <summary>
+    ''' Schickt den Fehler an den vorher angegebenen Server.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub Send()
+        ' Parameter für Server-Anfrage zusammensetzen
+        Dim args As String = "em=" & Exception.Message & _
+                             "&ei=" & Exception.Inner & _
+                             "&st=" & Exception.StackTrace & _
+                             "&eme=" & Exception.TargetSite & _
+                             "&udesc=" & Exception.UserDescription & _
+                             "&appid=" & Application.ID & _
+                             "&v=" & Application.Version & _
+                             "&net=" & NETFramework & _
+                             "&os=" & InstalledOS
+
+        ' Prüfen, ob Computer eine Internetverbindung hat
+        If My.Computer.Network.Ping(Server.PingIP) Then
+            If Functions.PostURL(Server.Server, args).Split(";"c)(0) = "1" Then
+                Debug.Print("[ExceptionBase Info] Sent error report to the database.")
+            Else
+                Debug.Print("[ExceptionBase Info] Error while sending error to the database.")
+            End If
+        End If
     End Sub
 
     ''' <summary>
@@ -135,25 +173,7 @@ Public Class ExceptionBase
             Exception.UserDescription = NOTAVAILABLE
         End If
 
-        ' Parameter für Server-Anfrage zusammensetzen
-        Dim args As String = "em=" & Exception.Message & _
-                             "&ei=" & Exception.Inner & _
-                             "&st=" & Exception.StackTrace & _
-                             "&eme=" & Exception.TargetSite & _
-                             "&udesc=" & Exception.UserDescription & _
-                             "&appid=" & Application.ID & _
-                             "&v=" & Application.Version & _
-                             "&net=" & NETFramework & _
-                             "&os=" & InstalledOS
-
-        ' Prüfen, ob Computer eine Internetverbindung hat
-        If My.Computer.Network.Ping(Server.PingIP) Then
-            If Functions.PostURL(Server.Server, args).Split(";"c)(0) = "1" Then
-                Debug.Print("[ExceptionBase Info] Sent error report to the database.")
-            Else
-                Debug.Print("[ExceptionBase Info] Error while sending error to the database.")
-            End If
-        End If
+        Send()
     End Sub
 #End Region
 End Class

@@ -30,6 +30,7 @@ Partial Class MainForm
         Me.tbDatabaseAdress = New System.Windows.Forms.TextBox()
         Me.gbAppID = New System.Windows.Forms.GroupBox()
         Me.nudAppID = New System.Windows.Forms.NumericUpDown()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.gbServerAddress.SuspendLayout()
         Me.gbAppID.SuspendLayout()
         CType(Me.nudAppID, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -116,11 +117,21 @@ Partial Class MainForm
         Me.nudAppID.Size = New System.Drawing.Size(47, 20)
         Me.nudAppID.TabIndex = 0
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(12, 206)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(409, 33)
+        Me.Button1.TabIndex = 9
+        Me.Button1.Text = "Eigenen Fehler erstellen und an die Datenbank schicken"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(433, 211)
+        Me.ClientSize = New System.Drawing.Size(433, 250)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.gbAppID)
         Me.Controls.Add(Me.gbServerAddress)
         Me.Controls.Add(Me.btnNonexistentFileError)
@@ -148,5 +159,6 @@ Partial Class MainForm
     Friend WithEvents gbAppID As System.Windows.Forms.GroupBox
     Friend WithEvents nudAppID As System.Windows.Forms.NumericUpDown
     Private WithEvents pnlBlueLine As System.Windows.Forms.Panel
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class
